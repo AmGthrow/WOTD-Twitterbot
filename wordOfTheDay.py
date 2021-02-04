@@ -1,4 +1,7 @@
-import bs4, requests, pyperclip, lxml
+import bs4
+import requests
+import pyperclip
+import lxml
 from datetime import date
 
 res = requests.get('https://www.merriam-webster.com/word-of-the-day')
