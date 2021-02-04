@@ -14,13 +14,7 @@ def main():
     pronunciation = soup.select_one('.word-syllables').text
     definitionList = soup.select('.wod-definition-container > p')
 
-    message = f'''{date} 
-
-    {word} 
-    {part_of_speech} | {pronunciation}
-
-    Definition
-    '''
+    message = f'{date}\n\n{word}\n\n{part_of_speech} | {pronunciation}\n\nDefinition'
 
     for definition in definitionList:
         message = message + '\n' + definition.text
