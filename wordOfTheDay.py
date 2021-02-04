@@ -5,13 +5,19 @@ res = requests.get('https://www.merriam-webster.com/word-of-the-day')
 res.raise_for_status()
 soup = bs4.BeautifulSoup(res.text, 'lxml')
 
+# Why doesn't soup.find() work for date??? I'd prefer .find() over .select_one(), gross
+date = soup.select_one('.w-a-title').text.split(':')[1][1:]
+word = soup.h1.text.upper()
+part_of_speech = soup.select_one('.main-attr').text
+pronunciation = soup.select_one('.word-syllables').text
+definitionList = soup.select('.wod-definition-container > p')
 
-message = f'''{soup.select_one('.w-a-title').text.split(':')[1][1:]} 
+message = f'''{date} 
 
-{soup.h1.text.upper()} 
-{soup.select_one('.main-attr').text} | {soup.select_one('.word-syllables').text}
+{word} 
+{part_of_speech} | {pronunciation}
 
-{soup.select_one('.wod-definition-container h2').text.capitalize()}
+Definition
 '''
 
 definitionList = soup.select('.wod-definition-container > p')
