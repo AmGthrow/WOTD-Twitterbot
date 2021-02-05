@@ -12,5 +12,5 @@ auth.set_access_token(access_token, access_token_secret)
 
 api = tweepy.API(auth)
 
-word = wordOfTheDay.main()
+word = wordOfTheDay.get_word()
 api.update_status(word)

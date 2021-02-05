@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import lxml
 
-def main():
+def get_word():
     res = requests.get('https://www.merriam-webster.com/word-of-the-day')
     res.raise_for_status()
     soup = BeautifulSoup(res.text, 'lxml')
@@ -22,4 +22,4 @@ def main():
     return message
 
 if __name__ == "__main__":
-    print(main)
+    print(get_word())
