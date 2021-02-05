@@ -1,5 +1,6 @@
 import tweepy
 from os import getenv
+import wordOfTheDay
 
 consumer_key = getenv("CONSUMER_KEY")
 consumer_secret = getenv("CONSUMER_SECRET")
@@ -10,3 +11,6 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
 api = tweepy.API(auth)
+
+word = wordOfTheDay.main()
+api.update_status(word)
