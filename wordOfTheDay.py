@@ -1,11 +1,11 @@
-import bs4
+from bs4 import BeautifulSoup
 import requests
 import lxml
 
 def main():
     res = requests.get('https://www.merriam-webster.com/word-of-the-day')
     res.raise_for_status()
-    soup = bs4.BeautifulSoup(res.text, 'lxml')
+    soup = BeautifulSoup(res.text, 'lxml')
 
     # Why doesn't soup.find() work for date??? I'd prefer .find() over .select_one(), gross
     date = soup.select_one('.w-a-title').text.split(':')[1][1:]
